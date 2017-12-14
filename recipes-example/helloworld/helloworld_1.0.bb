@@ -3,13 +3,13 @@ SECTION = "examples"
 LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda2f7b4f302"
 
-SRCREV = "${AUTOREV}"
-SRC_URI = "git://github.com/yoctocookbook2ndedition/helloworld.git"
+SRC_URI = "file://helloworld.c"
+DEPENDS = "lttng-ust"
 
-S = "${WORKDIR}/git"
+S = "${WORKDIR}"
 
 do_compile() {
-             ${CC} ${LDFLAGS} helloworld.c -o helloworld
+             ${CC} ${LDFLAGS} helloworld.c -o helloworld -llttng-ust -ldl
 }
 
 do_install() {
